@@ -1,1 +1,270 @@
-DOCTYPE html><html><head><meta charset="UTF-8"><title>Spark 5</title><style>body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f2f5; } .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }</style></head><body><div class="card"><h1>Spark 5</h1><p>लवकरच येत आहे!</p></div></body></html>.
+:
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark 5 पूर्ण ॲप इंटरफेस</title>
+    <style>
+        :root {
+            --primary: #6a1b9a;
+            --secondary: #9c27b0;
+            --accent: #e040fb;
+            --bg-gradient: linear-gradient(135deg, #311b92, #6a1b9a);
+            --text-color: #333;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-frame {
+            width: 100%;
+            max-width: 450px;
+            background: var(--light-gray);
+            border-radius: 35px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--white);
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .app-logo {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .notification-banner {
+            background: #ffecb3;
+            color: #ff8f00;
+            padding: 12px 20px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #ffe082;
+        }
+
+        .search-container {
+            padding: 15px 20px;
+            background: var(--white);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 18px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background: #fafafa;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+            background: var(--white);
+        }
+
+        .content-area {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .welcome-title {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .nav-menu {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 500;
+            gap: 8px;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: #ede7f6;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            transition: background 0.2s;
+        }
+
+        .nav-item:hover .icon-circle {
+            background: #d1c4e9;
+        }
+
+        .action-btn {
+            width: 100%;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 16px;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(156, 39, 176, 0.3);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--white);
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-frame">
+    <!-- हेडर विभाग -->
+    <header>
+        <div class="user-profile">
+            <div class="avatar">U</div>
+            <div>
+                <div style="font-weight: bold; color: white;">वापरकर्ता</div>
+                <div style="font-size: 11px; opacity: 0.9;">प्रोफाइल</div>
+            </div>
+        </div>
+        <div class="app-logo">S5</div>
+    </header>
+
+    <!-- नोटिफिकेशन बँनर -->
+    <div class="notification-banner">
+        <span>🔔</span> नवीन अपडेट: Spark 5 लवकरच येत आहे!
+    </div>
+
+    <!-- सर्च बार -->
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="शोध घ्या...">
+    </div>
+
+    <!-- मुख्य मजकूर आणि फीचर्स विभाग -->
+    <div class="content-area">
+        <div class="card">
+            <h2 class="welcome-title">स्वागत आहे!</h2>
+            <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">
+                तुमचे स्वतःचे ॲप इंटरफेस तयार झाले आहे. खालील नेव्हिगेशन वापरून विविध फीचर्स ॲक्सेस करा.
+            </p>
+        </div>
+
+        <!-- नेव्हिगेशन मेनू -->
+        <div class="nav-menu">
+            <a href="#" class="nav-item" onclick="alert('होम पेज')">
+                <div class="icon-circle">🏠</div>होम
+            </a>
+            <a href="#" class="nav-item" onclick="alert('पेमेंट विभाग')">
+                <div class="icon-circle">💳</div>पेमेंट
+            </a>
+            <a href="#" class="nav-item" onclick="alert('रिपोर्ट्स विभाग')">
+                <div class="icon-circle">📊</div>रिपोर्ट्स
+            </a>
+            <a href="#" class="nav-item" onclick="alert('सेटिंग्ज विभाग')">
+                <div class="icon-circle">⚙️</div>सेटिंग्ज
+            </a>
+        </div>
+
+        <!-- डॅशबोर्ड कार्ड आणि मुख्य बटण -->
+        <div class="card">
+            <h3 style="margin-top:0; color: var(--primary);">डॅशबोर्ड</h3>
+            <p style="color: #666; margin-bottom: 25px;">येथे तुमच्या ॲपची मुख्य माहिती आणि कार्यक्षमता दिसेल.</p>
+            <button class="action-btn" onclick="alert('ॲक्शन ट्रिगर झाली!')">कृती सुरू करा</button>
+        </div>
+    </div>
+
+    <!-- फूटर -->
+    <footer>
+        © २०२६ Spark 5 Inc. सर्व हक्क सुरक्षित.
+    </footer>
+</div>
+
+</body>
+</html>
+
